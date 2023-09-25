@@ -14,7 +14,6 @@
     crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="style.css" />
   <title>Home</title>
-  <script src="java.js"></script>
 </head>
 
 <body>
@@ -73,8 +72,8 @@
                       <input type="text" class="form-control mb-2" id="searchField" placeholder="Search"
                         aria-label="Search" aria-describedby="basic-addon2" />
                       <div class="input-group-append" style="margin-bottom: 4%">
-                        <button class="btn btn-outline-secondary btn-sm" type="button" id="button-search"
-                          onclick="search()">
+                        <button class="btn btn-outline-secondary btn-sm" type="button" id="Ricerca"
+                          onclick="search(Ricerca.value)">
                           GO
                         </button>
                       </div>
@@ -110,52 +109,8 @@
           <div class="col-10">
             <div id="searchResults" style="display: none">
               <h2>Search Results</h2>
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-10">
-            <div id="Billie-eilish" class="d-none">
-              <h2>Billie Eilish</h2>
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-                id="Billie-eilishSection">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-10">
-            <div id="eminem" class="d-none">
-              <h2>Eminem</h2>
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="eminemSection">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-10">
-            <div id="metallica" class="d-none">
-              <h2>Metallica</h2>
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="metallicaSection">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-10">
-            <div id="queen" class="d-none">
-              <h2>Queen</h2>
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="queenSection">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-10">
-            <div id="found" class="d-none">
-              <h2>Search results</h2>
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="searchSection">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
+
               </div>
             </div>
           </div>
@@ -213,8 +168,8 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
 
-  <script>
-  </script>
+    <script src="java.js"></script>
+
 </body>
 
 </html>

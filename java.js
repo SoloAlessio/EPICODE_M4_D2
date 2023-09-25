@@ -1,20 +1,32 @@
+const Ricerca = document.querySelector("#searchField")
+
 function titoli(){
-  let titoli = document.querySelectorAll(".title");
-  let body = document.querySelector(".modal-body");
+  const titoli = document.querySelectorAll(".title")
+  const body = document.querySelector(".modal-body")
 
-  if(body.innerHTML == ""){
-    for (let i = 0; i < titoli.length; i++) {
-      body.innerHTML += `<p>${titoli[i].innerHTML}</p>`
-    }
+  body.innerHTML = ""
+
+  for (let i = 0; i < titoli.length; i++) {
+    body.innerHTML += `<p>${titoli[i].innerHTML}</p>`
   }
-
-  
 }
 
-const fetchMusic = (query, id) => {
-  const section = document.querySelector(`#${id}`)
+function secondsToMinutes(seconds) {
 
-  const row = document.querySelector(`#${id}Section`)
+  const minutes = Math.floor(seconds / 60);
+  let remainingSeconds = seconds % 60;
+
+  if(remainingSeconds < 10){
+    remainingSeconds = "0" + remainingSeconds
+  }
+
+  return `${minutes}:${remainingSeconds}`;
+}
+
+const search = (query) => {
+  const section = document.querySelector(`#searchResults`)
+  const row = document.querySelector("#searchResults .row")
+  row.innerHTML = ""
 
   fetch(
     "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + query
@@ -24,20 +36,20 @@ const fetchMusic = (query, id) => {
     })
     .then((res) => {
       let music = res.data
-      section.classList.remove("d-none")
-      for (let i = 0; i < music.slice(0,4).length; i++) {
+      section.style.display = "block"
+      for (let i = 0; i < music.length; i++) {
         const element = music[i]
-        row.innerHTML += `<div class='col col-3'> <img class='w-100 rounded' src='${element.album.cover_xl}'/> <p class="mt-2 title">${element.title}</p></div>`
+        row.innerHTML += `<div class='col col-3 mt-4'> 
+                            <img class='w-100 rounded' src='${element.album.cover_xl}'/> 
+                            <p class="mt-3 mb-0 d-flex justify-content-between title">
+                              <span>${element.title}</span>
+                              <span class="text-muted">${secondsToMinutes(element.duration)}</span>
+                            </p>
+                            <p class="text-white-50">${element.artist.name}</p>
+                          </div>`
       }
     })
-    .catch((err) => console.log(err))
 
-    titoli();
+    titoli()
 }
 
-window.onload = () => {
-  fetchMusic("Billie-eilish","Billie-eilish")
-  fetchMusic("eminem", "eminem")
-  fetchMusic("queen", "queen")
-  fetchMusic("metallica", "metallica")
-}
